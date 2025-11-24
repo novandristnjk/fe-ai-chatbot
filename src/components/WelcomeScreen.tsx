@@ -1,32 +1,10 @@
-import { Sparkles, Code, Lightbulb, FileText } from 'lucide-react';
+import { Sparkles, Code, Lightbulb, FileText, AirplayIcon } from 'lucide-react';
 
 interface WelcomeScreenProps {
   onSuggestionClick: (suggestion: string) => void;
 }
 
 export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
-  const suggestions = [
-    {
-      icon: Code,
-      title: 'Bantuan Coding',
-      description: 'Bantu saya menulis kode atau debug program',
-    },
-    {
-      icon: Lightbulb,
-      title: 'Brainstorming Ide',
-      description: 'Diskusikan ide kreatif untuk proyek saya',
-    },
-    {
-      icon: FileText,
-      title: 'Tulis Konten',
-      description: 'Buat artikel, email, atau konten lainnya',
-    },
-    {
-      icon: Sparkles,
-      title: 'Jelaskan Konsep',
-      description: 'Bantu saya memahami topik yang kompleks',
-    },
-  ];
 
   return (
     <div
@@ -54,7 +32,7 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
               animation: "glow 2s ease-in-out infinite",
             }}
           >
-            <Sparkles style={{ width: "2rem", height: "2rem", color: "white" }} />
+            <AirplayIcon style={{ width: "2rem", height: "2rem", color: "white" }} />
           </div>
           <h2
             style={{
@@ -64,120 +42,13 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
               marginBottom: "0.75rem",
             }}
           >
-            Selamat datang di AI Assistant
+            Wellcome
           </h2>
           <p style={{ color: "var(--text-secondary)", fontSize: "1.125rem" }}>
-            Mulai percakapan baru atau pilih salah satu saran di bawah
           </p>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "1rem",
-            marginBottom: "3rem",
-          }}
-        >
-          {suggestions.map((suggestion, index) => {
-            const Icon = suggestion.icon;
-            return (
-              <button
-                key={index}
-                onClick={() => onSuggestionClick(suggestion.description)}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "var(--primary)";
-                  e.currentTarget.style.background = "var(--background-tertiary)";
-                  e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.boxShadow = "0 8px 20px rgba(37, 99, 235, 0.3)";
-                  const iconDiv = e.currentTarget.querySelector('.icon-div') as HTMLElement;
-                  if (iconDiv) iconDiv.style.background = "var(--primary)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "var(--border)";
-                  e.currentTarget.style.background = "var(--white)";
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                  const iconDiv = e.currentTarget.querySelector('.icon-div') as HTMLElement;
-                  if (iconDiv) iconDiv.style.background = "var(--background-tertiary)";
-                }}
-                style={{
-                  padding: "1.5rem",
-                  border: "1px solid var(--border)",
-                  borderRadius: "0.75rem",
-                  transition: "all 0.3s ease",
-                  textAlign: "left",
-                  background: "var(--white)",
-                  cursor: "pointer",
-                }}
-              >
-                <div style={{ display: "flex", alignItems: "start", gap: "1rem" }}>
-                  <div
-                    className="icon-div"
-                    style={{
-                      padding: "0.625rem",
-                      background: "var(--background-tertiary)",
-                      borderRadius: "0.5rem",
-                      transition: "all 0.3s ease",
-                    }}
-                  >
-                    <Icon style={{ width: "1.25rem", height: "1.25rem", color: "var(--primary)" }} />
-                  </div>
-                  <div style={{ flex: 1 }}>
-                    <h3
-                      style={{
-                        color: "var(--text)",
-                        marginBottom: "0.5rem",
-                        fontWeight: "600",
-                      }}
-                    >
-                      {suggestion.title}
-                    </h3>
-                    <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)" }}>
-                      {suggestion.description}
-                    </p>
-                  </div>
-                </div>
-              </button>
-            );
-          })}
-        </div>
-
-        <div
-          style={{
-            padding: "1.5rem",
-            background: "var(--background-secondary)",
-            border: "1px solid var(--border)",
-            borderRadius: "0.75rem",
-          }}
-        >
-          <h3
-            style={{
-              color: "var(--text)",
-              marginBottom: "0.75rem",
-              fontWeight: "600",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.5rem",
-            }}
-          >
-            <span style={{ fontSize: "1.25rem" }}>💡</span> Tips
-          </h3>
-          <ul style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <li style={{ fontSize: "0.875rem", color: "var(--text-secondary)", display: "flex", alignItems: "start" }}>
-              <span style={{ color: "var(--primary)", marginRight: "0.5rem" }}>•</span>
-              <span>Jelaskan pertanyaan Anda dengan detail untuk mendapat jawaban terbaik</span>
-            </li>
-            <li style={{ fontSize: "0.875rem", color: "var(--text-secondary)", display: "flex", alignItems: "start" }}>
-              <span style={{ color: "var(--primary)", marginRight: "0.5rem" }}>•</span>
-              <span>Gunakan Shift + Enter untuk baris baru</span>
-            </li>
-            <li style={{ fontSize: "0.875rem", color: "var(--text-secondary)", display: "flex", alignItems: "start" }}>
-              <span style={{ color: "var(--primary)", marginRight: "0.5rem" }}>•</span>
-              <span>Semua riwayat chat tersimpan di sidebar</span>
-            </li>
-          </ul>
-        </div>
+       
       </div>
     </div>
   );
