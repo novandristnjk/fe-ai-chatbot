@@ -46,8 +46,9 @@ export function ChatInput({ onSend, onFileUpload, disabled }: ChatInputProps) {
   return (
     <div
       style={{
-        borderTop: "1px solid var(--medium-gray)",
-        background: "var(--dark-gray)",
+        borderTop: "1px solid var(--border)",
+        background: "var(--white)",
+        boxShadow: "0 -1px 3px rgba(0, 0, 0, 0.05)",
       }}
     >
       <div
@@ -67,9 +68,9 @@ export function ChatInput({ onSend, onFileUpload, disabled }: ChatInputProps) {
               alignItems: "center",
               justifyContent: "center",
               padding: "0.875rem",
-              background: isUploading ? "var(--light-gray)" : "var(--medium-gray)",
+              background: isUploading ? "var(--border-light)" : "var(--background-tertiary)",
               borderRadius: "0.75rem",
-              color: "var(--text-light)",
+              color: "var(--text)",
               transition: "all 0.2s ease",
             }}
           >
@@ -98,18 +99,18 @@ export function ChatInput({ onSend, onFileUpload, disabled }: ChatInputProps) {
                 width: "100%",
                 padding: "0.875rem 1rem",
                 border: `2px solid ${
-                  isFocused ? "var(--primary-red)" : "var(--light-gray)"
+                  isFocused ? "var(--primary)" : "var(--border)"
                 }`,
                 borderRadius: "0.75rem",
                 resize: "none",
-                background: "var(--medium-gray)",
-                color: "var(--text-light)",
+                background: "var(--background)",
+                color: "var(--text)",
                 fontSize: "1rem",
                 minHeight: "3.25rem",
                 maxHeight: "8rem",
                 transition: "all 0.2s ease",
                 boxShadow: isFocused
-                  ? "0 0 0 3px rgba(220, 38, 38, 0.15)"
+                  ? "0 0 0 3px rgba(37, 99, 235, 0.15)"
                   : "none",
               }}
             />
@@ -123,8 +124,8 @@ export function ChatInput({ onSend, onFileUpload, disabled }: ChatInputProps) {
               padding: "0.875rem",
               background:
                 !input.trim() || disabled || isUploading
-                  ? "var(--light-gray)"
-                  : "var(--primary-red)",
+                  ? "var(--border-light)"
+                  : "var(--primary)",
               color: "white",
               borderRadius: "0.75rem",
               transition: "all 0.2s ease",
@@ -133,7 +134,7 @@ export function ChatInput({ onSend, onFileUpload, disabled }: ChatInputProps) {
               boxShadow:
                 !input.trim() || disabled || isUploading
                   ? "none"
-                  : "0 4px 12px rgba(220, 38, 38, 0.25)",
+                  : "0 4px 12px rgba(37, 99, 235, 0.25)",
             }}
           >
             <Send style={{ width: "1.25rem", height: "1.25rem" }} />
@@ -143,7 +144,7 @@ export function ChatInput({ onSend, onFileUpload, disabled }: ChatInputProps) {
         <p
           style={{
             fontSize: "0.75rem",
-            color: "var(--text-gray)",
+            color: "var(--text-light)",
             marginTop: "0.5rem",
             textAlign: "center",
           }}

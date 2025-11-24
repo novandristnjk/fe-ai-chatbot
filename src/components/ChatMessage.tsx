@@ -1,5 +1,5 @@
 import { Bot, User, FileText } from 'lucide-react';
-import type { Message } from '../App';
+import type { Message } from '../types';
 
 interface ChatMessageProps {
   message: Message;
@@ -28,11 +28,11 @@ export function ChatMessage({ message, isLoading }: ChatMessageProps) {
           alignItems: "center",
           justifyContent: "center",
           background: isAssistant
-            ? "linear-gradient(135deg, var(--primary-red), var(--dark-red))"
-            : "linear-gradient(135deg, var(--light-gray), var(--medium-gray))",
+            ? "linear-gradient(135deg, var(--primary), var(--primary-dark))"
+            : "linear-gradient(135deg, var(--background-tertiary), var(--border))",
           boxShadow: isAssistant
-            ? "0 4px 12px rgba(220, 38, 38, 0.3)"
-            : "0 4px 12px rgba(0, 0, 0, 0.2)",
+            ? "0 4px 12px rgba(37, 99, 235, 0.3)"
+            : "0 4px 12px rgba(0, 0, 0, 0.1)",
         }}
       >
         {isAssistant ? (
@@ -47,7 +47,7 @@ export function ChatMessage({ message, isLoading }: ChatMessageProps) {
           style={{
             fontSize: "0.875rem",
             fontWeight: "600",
-            color: isAssistant ? "var(--primary-red)" : "var(--text-light)",
+            color: isAssistant ? "var(--primary)" : "var(--text)",
           }}
         >
           {isAssistant ? 'AI Assistant' : 'Anda'}
@@ -59,7 +59,7 @@ export function ChatMessage({ message, isLoading }: ChatMessageProps) {
               style={{
                 width: "0.5rem",
                 height: "0.5rem",
-                background: "var(--primary-red)",
+                background: "var(--primary)",
                 borderRadius: "50%",
                 animationDelay: "0ms",
               }}
@@ -69,7 +69,7 @@ export function ChatMessage({ message, isLoading }: ChatMessageProps) {
               style={{
                 width: "0.5rem",
                 height: "0.5rem",
-                background: "var(--primary-red)",
+                background: "var(--primary)",
                 borderRadius: "50%",
                 animationDelay: "150ms",
               }}
@@ -79,7 +79,7 @@ export function ChatMessage({ message, isLoading }: ChatMessageProps) {
               style={{
                 width: "0.5rem",
                 height: "0.5rem",
-                background: "var(--primary-red)",
+                background: "var(--primary)",
                 borderRadius: "50%",
                 animationDelay: "300ms",
               }}
@@ -89,7 +89,7 @@ export function ChatMessage({ message, isLoading }: ChatMessageProps) {
           <>
             <div
               style={{
-                color: "var(--text-light)",
+                color: "var(--text)",
                 whiteSpace: "pre-wrap",
                 wordBreak: "break-word",
                 lineHeight: "1.6",
@@ -101,7 +101,7 @@ export function ChatMessage({ message, isLoading }: ChatMessageProps) {
             {/* Display Sources */}
             {message.sources && message.sources.length > 0 && (
               <div style={{ marginTop: "0.75rem" }}>
-                <div style={{ fontSize: "0.75rem", color: "var(--text-gray)", marginBottom: "0.5rem", fontWeight: "600" }}>
+                <div style={{ fontSize: "0.75rem", color: "var(--text-light)", marginBottom: "0.5rem", fontWeight: "600" }}>
                   <FileText style={{ width: "0.875rem", height: "0.875rem", display: "inline", marginRight: "0.25rem" }} />
                   Sumber Referensi:
                 </div>
@@ -111,16 +111,16 @@ export function ChatMessage({ message, isLoading }: ChatMessageProps) {
                       key={idx}
                       style={{
                         padding: "0.75rem",
-                        background: "var(--dark-gray)",
-                        borderLeft: "3px solid var(--primary-red)",
+                        background: "var(--background-secondary)",
+                        borderLeft: "3px solid var(--primary)",
                         borderRadius: "0.5rem",
                         fontSize: "0.8rem",
                       }}
                     >
-                      <div style={{ color: "var(--text-gray)", marginBottom: "0.25rem" }}>
+                      <div style={{ color: "var(--text-light)", marginBottom: "0.25rem" }}>
                         Halaman {source.payload.page} • Skor: {(source.score * 100).toFixed(1)}%
                       </div>
-                      <div style={{ color: "var(--text-light)", fontSize: "0.75rem", lineHeight: "1.4" }}>
+                      <div style={{ color: "var(--text-secondary)", fontSize: "0.75rem", lineHeight: "1.4" }}>
                         {source.text.slice(0, 200)}...
                       </div>
                     </div>

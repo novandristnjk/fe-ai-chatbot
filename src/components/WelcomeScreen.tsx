@@ -48,7 +48,7 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
               justifyContent: "center",
               width: "4rem",
               height: "4rem",
-              background: "linear-gradient(135deg, var(--primary-red), var(--dark-red))",
+              background: "linear-gradient(135deg, var(--primary), var(--primary-dark))",
               borderRadius: "1rem",
               marginBottom: "1.5rem",
               animation: "glow 2s ease-in-out infinite",
@@ -60,13 +60,13 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
             style={{
               fontSize: "2rem",
               fontWeight: "700",
-              color: "var(--text-light)",
+              color: "var(--text)",
               marginBottom: "0.75rem",
             }}
           >
             Selamat datang di AI Assistant
           </h2>
-          <p style={{ color: "var(--text-gray)", fontSize: "1.125rem" }}>
+          <p style={{ color: "var(--text-secondary)", fontSize: "1.125rem" }}>
             Mulai percakapan baru atau pilih salah satu saran di bawah
           </p>
         </div>
@@ -86,28 +86,28 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
                 key={index}
                 onClick={() => onSuggestionClick(suggestion.description)}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "var(--primary-red)";
-                  e.currentTarget.style.background = "var(--medium-gray)";
+                  e.currentTarget.style.borderColor = "var(--primary)";
+                  e.currentTarget.style.background = "var(--background-tertiary)";
                   e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.boxShadow = "0 8px 20px rgba(220, 38, 38, 0.3)";
+                  e.currentTarget.style.boxShadow = "0 8px 20px rgba(37, 99, 235, 0.3)";
                   const iconDiv = e.currentTarget.querySelector('.icon-div') as HTMLElement;
-                  if (iconDiv) iconDiv.style.background = "var(--primary-red)";
+                  if (iconDiv) iconDiv.style.background = "var(--primary)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "var(--light-gray)";
-                  e.currentTarget.style.background = "var(--dark-gray)";
+                  e.currentTarget.style.borderColor = "var(--border)";
+                  e.currentTarget.style.background = "var(--white)";
                   e.currentTarget.style.transform = "translateY(0)";
                   e.currentTarget.style.boxShadow = "none";
                   const iconDiv = e.currentTarget.querySelector('.icon-div') as HTMLElement;
-                  if (iconDiv) iconDiv.style.background = "var(--light-gray)";
+                  if (iconDiv) iconDiv.style.background = "var(--background-tertiary)";
                 }}
                 style={{
                   padding: "1.5rem",
-                  border: "1px solid var(--light-gray)",
+                  border: "1px solid var(--border)",
                   borderRadius: "0.75rem",
                   transition: "all 0.3s ease",
                   textAlign: "left",
-                  background: "var(--dark-gray)",
+                  background: "var(--white)",
                   cursor: "pointer",
                 }}
               >
@@ -116,24 +116,24 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
                     className="icon-div"
                     style={{
                       padding: "0.625rem",
-                      background: "var(--light-gray)",
+                      background: "var(--background-tertiary)",
                       borderRadius: "0.5rem",
                       transition: "all 0.3s ease",
                     }}
                   >
-                    <Icon style={{ width: "1.25rem", height: "1.25rem", color: "var(--primary-red)" }} />
+                    <Icon style={{ width: "1.25rem", height: "1.25rem", color: "var(--primary)" }} />
                   </div>
                   <div style={{ flex: 1 }}>
                     <h3
                       style={{
-                        color: "var(--text-light)",
+                        color: "var(--text)",
                         marginBottom: "0.5rem",
                         fontWeight: "600",
                       }}
                     >
                       {suggestion.title}
                     </h3>
-                    <p style={{ fontSize: "0.875rem", color: "var(--text-gray)" }}>
+                    <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)" }}>
                       {suggestion.description}
                     </p>
                   </div>
@@ -146,14 +146,14 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
         <div
           style={{
             padding: "1.5rem",
-            background: "var(--dark-gray)",
-            border: "1px solid var(--medium-gray)",
+            background: "var(--background-secondary)",
+            border: "1px solid var(--border)",
             borderRadius: "0.75rem",
           }}
         >
           <h3
             style={{
-              color: "var(--text-light)",
+              color: "var(--text)",
               marginBottom: "0.75rem",
               fontWeight: "600",
               display: "flex",
@@ -164,16 +164,16 @@ export function WelcomeScreen({ onSuggestionClick }: WelcomeScreenProps) {
             <span style={{ fontSize: "1.25rem" }}>💡</span> Tips
           </h3>
           <ul style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-            <li style={{ fontSize: "0.875rem", color: "var(--text-gray)", display: "flex", alignItems: "start" }}>
-              <span style={{ color: "var(--primary-red)", marginRight: "0.5rem" }}>•</span>
+            <li style={{ fontSize: "0.875rem", color: "var(--text-secondary)", display: "flex", alignItems: "start" }}>
+              <span style={{ color: "var(--primary)", marginRight: "0.5rem" }}>•</span>
               <span>Jelaskan pertanyaan Anda dengan detail untuk mendapat jawaban terbaik</span>
             </li>
-            <li style={{ fontSize: "0.875rem", color: "var(--text-gray)", display: "flex", alignItems: "start" }}>
-              <span style={{ color: "var(--primary-red)", marginRight: "0.5rem" }}>•</span>
+            <li style={{ fontSize: "0.875rem", color: "var(--text-secondary)", display: "flex", alignItems: "start" }}>
+              <span style={{ color: "var(--primary)", marginRight: "0.5rem" }}>•</span>
               <span>Gunakan Shift + Enter untuk baris baru</span>
             </li>
-            <li style={{ fontSize: "0.875rem", color: "var(--text-gray)", display: "flex", alignItems: "start" }}>
-              <span style={{ color: "var(--primary-red)", marginRight: "0.5rem" }}>•</span>
+            <li style={{ fontSize: "0.875rem", color: "var(--text-secondary)", display: "flex", alignItems: "start" }}>
+              <span style={{ color: "var(--primary)", marginRight: "0.5rem" }}>•</span>
               <span>Semua riwayat chat tersimpan di sidebar</span>
             </li>
           </ul>

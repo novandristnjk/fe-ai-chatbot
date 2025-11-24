@@ -1,4 +1,5 @@
 import axios from 'axios';
+import type { UploadResponse, ChatResponse } from './types';
 
 const API_BASE_URL = 'http://127.0.0.1:8000';
 
@@ -8,24 +9,6 @@ const apiClient = axios.create({
     'Content-Type': 'application/json',
   },
 });
-
-export interface UploadResponse {
-  doc_id: string;
-  chunks_extracted: number;
-  message: string;
-}
-
-export interface ChatResponse {
-  query: string;
-  response: string;
-  sources: Array<{
-    text: string;
-    payload: {
-      page: number;
-    };
-    score: number;
-  }>;
-}
 
 export const chatAPI = {
   uploadDocument: async (file: File): Promise<UploadResponse> => {

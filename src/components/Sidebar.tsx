@@ -1,5 +1,5 @@
 import { Plus, MessageSquare, Trash2, X } from 'lucide-react';
-import type { Chat } from '../App';
+import type { Chat } from '../types';
 
 interface SidebarProps {
   chats: Chat[];
@@ -26,8 +26,8 @@ export function Sidebar({
     <div
       style={{
         width: "16rem",
-        background: "var(--dark-gray)",
-        borderRight: "1px solid var(--medium-gray)",
+        background: "var(--white)",
+        borderRight: "1px solid var(--border)",
         display: "flex",
         flexDirection: "column",
         animation: "slideIn 0.3s ease-out",
@@ -36,7 +36,7 @@ export function Sidebar({
       <div
         style={{
           padding: "1rem",
-          borderBottom: "1px solid var(--medium-gray)",
+          borderBottom: "1px solid var(--border)",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -45,12 +45,12 @@ export function Sidebar({
         <button
           onClick={onNewChat}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = "var(--dark-red)";
+            e.currentTarget.style.background = "var(--primary-dark)";
             e.currentTarget.style.transform = "translateY(-2px)";
-            e.currentTarget.style.boxShadow = "0 4px 12px rgba(220, 38, 38, 0.4)";
+            e.currentTarget.style.boxShadow = "0 4px 12px rgba(37, 99, 235, 0.4)";
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = "var(--primary-red)";
+            e.currentTarget.style.background = "var(--primary)";
             e.currentTarget.style.transform = "translateY(0)";
             e.currentTarget.style.boxShadow = "none";
           }}
@@ -59,7 +59,7 @@ export function Sidebar({
             alignItems: "center",
             gap: "0.5rem",
             padding: "0.625rem 1rem",
-            background: "var(--primary-red)",
+            background: "var(--primary)",
             color: "white",
             borderRadius: "0.5rem",
             flex: 1,
@@ -73,7 +73,7 @@ export function Sidebar({
         <button
           onClick={onToggle}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = "var(--medium-gray)";
+            e.currentTarget.style.background = "var(--background-tertiary)";
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.background = "transparent";
@@ -82,7 +82,7 @@ export function Sidebar({
             marginLeft: "0.5rem",
             padding: "0.5rem",
             borderRadius: "0.5rem",
-            color: "var(--text-light)",
+            color: "var(--text)",
             transition: "background 0.2s ease",
           }}
         >
@@ -102,7 +102,7 @@ export function Sidebar({
             style={{
               textAlign: "center",
               padding: "2rem 0",
-              color: "var(--text-gray)",
+              color: "var(--text-light)",
             }}
           >
             <MessageSquare
@@ -123,7 +123,7 @@ export function Sidebar({
                 onClick={() => onSelectChat(chat.id)}
                 onMouseEnter={(e) => {
                   if (currentChatId !== chat.id) {
-                    e.currentTarget.style.background = "var(--medium-gray)";
+                    e.currentTarget.style.background = "var(--background-tertiary)";
                   }
                   const deleteBtn = e.currentTarget.querySelector('.delete-btn') as HTMLElement;
                   if (deleteBtn) deleteBtn.style.opacity = "1";
@@ -143,8 +143,8 @@ export function Sidebar({
                   borderRadius: "0.5rem",
                   cursor: "pointer",
                   transition: "all 0.2s ease",
-                  background: currentChatId === chat.id ? "var(--light-gray)" : "transparent",
-                  borderLeft: currentChatId === chat.id ? "3px solid var(--primary-red)" : "3px solid transparent",
+                  background: currentChatId === chat.id ? "var(--background-tertiary)" : "transparent",
+                  borderLeft: currentChatId === chat.id ? "3px solid var(--primary)" : "3px solid transparent",
                 }}
               >
                 <MessageSquare
@@ -152,14 +152,14 @@ export function Sidebar({
                     width: "1rem",
                     height: "1rem",
                     flexShrink: 0,
-                    color: currentChatId === chat.id ? "var(--primary-red)" : "var(--text-gray)",
+                    color: currentChatId === chat.id ? "var(--primary)" : "var(--text-light)",
                   }}
                 />
                 <span
                   style={{
                     flex: 1,
                     fontSize: "0.875rem",
-                    color: "var(--text-light)",
+                    color: "var(--text)",
                     overflow: "hidden",
                     textOverflow: "ellipsis",
                     whiteSpace: "nowrap",
@@ -174,20 +174,20 @@ export function Sidebar({
                     onDeleteChat(chat.id);
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "var(--primary-red)";
+                    e.currentTarget.style.background = "var(--error)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "var(--light-gray)";
+                    e.currentTarget.style.background = "var(--background-tertiary)";
                   }}
                   style={{
                     opacity: 0,
                     padding: "0.25rem",
-                    background: "var(--light-gray)",
+                    background: "var(--background-tertiary)",
                     borderRadius: "0.25rem",
                     transition: "all 0.2s ease",
                   }}
                 >
-                  <Trash2 style={{ width: "0.875rem", height: "0.875rem", color: "var(--text-light)" }} />
+                  <Trash2 style={{ width: "0.875rem", height: "0.875rem", color: "var(--text)" }} />
                 </button>
               </div>
             ))}
@@ -198,18 +198,18 @@ export function Sidebar({
       <div
         style={{
           padding: "1rem",
-          borderTop: "1px solid var(--medium-gray)",
+          borderTop: "1px solid var(--border)",
         }}
       >
         <div
           style={{
             fontSize: "0.75rem",
-            color: "var(--text-gray)",
+            color: "var(--text-light)",
             textAlign: "center",
           }}
         >
           <p style={{ fontWeight: "600" }}>AI Assistant v1.0</p>
-          <p style={{ marginTop: "0.25rem", color: "var(--primary-red)" }}>Production Ready</p>
+          <p style={{ marginTop: "0.25rem", color: "var(--primary)" }}>Production Ready</p>
         </div>
       </div>
     </div>

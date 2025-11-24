@@ -4,27 +4,8 @@ import { ChatMessage } from "./components/ChatMessage";
 import { ChatInput } from "./components/ChatInput";
 import { Sidebar } from "./components/Sidebar";
 import { chatAPI } from "./api";
+import type { Message, Chat } from "./types";
 import "./styles/globals.css";
-
-export interface Message {
-  id: string;
-  role: "user" | "assistant";
-  content: string;
-  timestamp: Date;
-  sources?: Array<{
-    text: string;
-    payload: { page: number };
-    score: number;
-  }>;
-}
-
-export interface Chat {
-  id: string;
-  title: string;
-  messages: Message[];
-  timestamp: Date;
-  docId?: string; // Tambahkan doc_id untuk setiap chat
-}
 
 export default function App() {
   const [chats, setChats] = useState<Chat[]>([]);
@@ -178,8 +159,8 @@ export default function App() {
       style={{
         display: "flex",
         height: "100vh",
-        background: "var(--black)",
-        color: "var(--text-light)",
+        background: "var(--background-secondary)",
+        color: "var(--text)",
       }}
     >
       <Sidebar
@@ -202,12 +183,13 @@ export default function App() {
       >
         <header
           style={{
-            borderBottom: "1px solid var(--medium-gray)",
+            borderBottom: "1px solid var(--border)",
             padding: "1rem 1.5rem",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            background: "var(--dark-gray)",
+            background: "var(--white)",
+            boxShadow: "0 1px 3px rgba(0, 0, 0, 0.05)",
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
@@ -216,9 +198,9 @@ export default function App() {
                 onClick={() => setIsSidebarOpen(true)}
                 style={{
                   padding: "0.5rem",
-                  background: "var(--medium-gray)",
+                  background: "var(--background-tertiary)",
                   borderRadius: "0.5rem",
-                  color: "var(--text-light)",
+                  color: "var(--text)",
                 }}
               >
                 <svg
@@ -239,7 +221,7 @@ export default function App() {
               style={{
                 fontSize: "1.5rem",
                 fontWeight: "700",
-                background: "linear-gradient(135deg, var(--primary-red), var(--light-red))",
+                background: "linear-gradient(135deg, var(--primary), var(--primary-light))",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -254,7 +236,7 @@ export default function App() {
           style={{
             flex: 1,
             overflowY: "auto",
-            background: "var(--black)",
+            background: "var(--background)",
           }}
         >
           {!currentChat || currentChat.messages.length === 0 ? (
